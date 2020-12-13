@@ -4,7 +4,7 @@ public class LeetCode139 {
     public static void main(String[] args) {
         //  构造样例输入
         String s = "leetcode";
-        HashSet<String> wordDict = new HashSet<>() {
+        HashSet<String> wordDict = new HashSet<String>() {
             {
                 add("leet");
                 add("code");

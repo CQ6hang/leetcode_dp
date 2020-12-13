@@ -5,7 +5,7 @@ public class LeetCode140 {
     public static void main(String[] args) {
         //  构造输入样例
         String s = "catsanddog";
-        HashSet<String> wordDict = new HashSet<>() {
+        HashSet<String> wordDict = new HashSet<String>() {
             {
                 add("cat");
                 add("cats");
@@ -20,8 +20,15 @@ public class LeetCode140 {
         boolean[] result = new boolean[len + 1];
         ArrayList<ArrayList<String>> sentences = new ArrayList<>();
 
-        result[0] = true;
-        sentences.add(new ArrayList<>() {
+        int max_word_len = 0;
+        for (String word : wordDict) {
+            if (word.length() > max_word_len) {
+                max_word_len = word.length();
+            }
+        }
+
+        result[0] = false;
+        sentences.add(new ArrayList<String>() {
             {
                 add("");
             }
@@ -29,16 +36,16 @@ public class LeetCode140 {
 
         for (int i = 1; i <= len; ++i) {
             ArrayList<String> temp = new ArrayList<>();
-            for (int j = 0; j < i; ++j) {
+            if (i <= max_word_len && wordDict.contains(s.substring(0, i))) {
+                result[i] = true;
+                temp.add(s.substring(0, i));
+            }
+            for (int j = Math.max(i - max_word_len, 0); j < i; ++j) {
                 if (result[j] && wordDict.contains(s.substring(j, i))) {
                     result[i] = true;
                     //  记录符合条件的句子
                     for (String str : sentences.get(j)) {
-                        if (j != 0) {
-                            temp.add(str + " " + s.substring(j, i));
-                        } else {
-                            temp.add(str + s.substring(j, i));
-                        }
+                        temp.add(str + " " + s.substring(j, i));
                     }
                 }
             }

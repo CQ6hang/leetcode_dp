@@ -2,29 +2,29 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class LeetCode102 {
+public class LeetCode120 {
     public static void main(String[] args) {
         //  构造样例
         List<List<Integer>> triangle = new ArrayList<>();
-        triangle.add(new ArrayList<>() {
+        triangle.add(new ArrayList<Integer>() {
             {
                 add(2);
             }
         });
-        triangle.add(new ArrayList<>() {
+        triangle.add(new ArrayList<Integer>() {
             {
                 add(3);
                 add(4);
             }
         });
-        triangle.add(new ArrayList<>() {
+        triangle.add(new ArrayList<Integer>() {
             {
                 add(6);
                 add(5);
                 add(7);
             }
         });
-        triangle.add(new ArrayList<>() {
+        triangle.add(new ArrayList<Integer>() {
             {
                 add(4);
                 add(1);
